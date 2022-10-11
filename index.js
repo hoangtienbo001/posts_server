@@ -3,11 +3,13 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import posts  from './routers/posts.js';
 import {mongoose} from 'mongoose';
+import dotenv from 'dotenv';
 
+dotenv.config();
 
 const app= express();
 const PORT =process.env.port || 5000;
-const URI='mongodb+srv://admin:12345@cluster0.nayzxit.mongodb.net/demo?retryWrites=true&w=majority'
+const URI= process.env.DATABASE_URL;
 
 app.use(cors());
 app.use(express.json({ limit: '30mb' }));
